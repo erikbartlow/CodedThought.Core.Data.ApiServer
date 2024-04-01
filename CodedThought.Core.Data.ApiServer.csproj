@@ -15,13 +15,13 @@
 	<RepositoryUrl>https://github.com/erikbartlow/CodedThought.Core/tree/main</RepositoryUrl>
 	<Version>$(VersionPrefix)</Version>
 	<Authors>Erik Bartlow</Authors>
-	<Company>Erik Bartlow</Company>
+	<Company>CodedThought</Company>
 	<PackageProjectUrl>https://github.com/erikbartlow/CodedThought.Core</PackageProjectUrl>
 	<RepositoryType>git</RepositoryType>
 	<RepositoryUrl>https://github.com/erikbartlow/CodedThought.Core</RepositoryUrl>
 	<IncludeContentInPack>true</IncludeContentInPack>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>
-	<PackageLicenseFile>Licenses/LICENSE.txt</PackageLicenseFile>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<IncludeReferencedProjects>true</IncludeReferencedProjects>
@@ -40,12 +40,11 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\CodedThought.Core\CodedThought.Core.csproj" />
+    <ProjectReference Include="..\CodedThought.Core\CodedThought.Core\CodedThought.Core.csproj" />
   </ItemGroup>
 
-
   <ItemGroup>
-	<None Update="Licenses\LICENSE.txt" Pack="true" PackagePath="" />
+	<None Update="LICENSE" Pack="true" PackagePath="" />
 	<None Update="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 

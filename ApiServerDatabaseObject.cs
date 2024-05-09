@@ -113,10 +113,18 @@ namespace CodedThought.Core.Data.ApiServer
 
         protected override byte[] GetBlobValue(IDataReader reader, string columnName) => throw new NotImplementedException();
 
-        protected override string GetTableDefinitionQuery(string tableName) => throw new NotImplementedException();
+        public override string GetTableDefinitionQuery(string tableName) => throw new NotImplementedException();
 
-        protected override string GetDefaultSessionSchemaNameQuery() => throw new NotImplementedException();
+        public override string GetDefaultSessionSchemaNameQuery() => throw new NotImplementedException();
         public override void Add(string tableName, object obj, List<TableColumn> columns, IDBStore store) => throw new NotImplementedException();
+        public override DbTypeSupported ToDbSupportedType(string dbTypeName) => throw new NotImplementedException();
+        public override string GetViewDefinitionQuery(string viewName) => throw new NotImplementedException();
+        public override string GetTableListQuery() => throw new NotImplementedException();
+        public override string GetViewListQuery() => throw new NotImplementedException();
+        public override List<TableColumn> GetTableDefinition(string tableName) => throw new NotImplementedException();
+        public override List<TableColumn> GetViewDefinition(string viewName) => throw new NotImplementedException();
+        public override List<TableSchema> GetTableDefinitions() => throw new NotImplementedException();
+        public override List<ViewSchema> GetViewDefinitions() => throw new NotImplementedException();
 
         #endregion Non-Implemented Interface Methods
     }

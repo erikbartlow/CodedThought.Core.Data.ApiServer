@@ -10,7 +10,7 @@ ApiServer requires CodedThough.Core.Configuration and  CodedThought.Core.  These
 ### Usage
 1. Install required packages.  See requirements above.
 2. Add the Api Connection settings in the appSetting.json or a custom .json file.
-    > Note:  See [CodedThought.Core.Configuration](https://www.nuget.org/packages/CodedThought.Core.Configuration) for JSON configguration specifications.
+    > Note:  See [CodedThought.Core.Configuration](https://www.nuget.org/packages/CodedThought.Core.Configuration) for JSON configuration specifications.
 3. Add a new class and inherit from `CodedThough.Core.Data.GenericApiDataStoreController`.  Below is a sample class file.
 ```c sharp
     [ApiController]

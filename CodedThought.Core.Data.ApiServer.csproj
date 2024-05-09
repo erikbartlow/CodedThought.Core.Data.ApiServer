@@ -16,7 +16,7 @@
 	<Version>$(VersionPrefix)</Version>
 	<Authors>Erik Bartlow</Authors>
 	<Company>CodedThought</Company>
-	<PackageProjectUrl>https://github.com/erikbartlow/CodedThought.Core</PackageProjectUrl>
+	<PackageProjectUrl>https://github.com/erikbartlow/CodedThought.Core.Data.ApiServer</PackageProjectUrl>
 	<RepositoryType>git</RepositoryType>
 	<RepositoryUrl>https://github.com/erikbartlow/CodedThought.Core.Data.ApiServer</RepositoryUrl>
 	<IncludeContentInPack>true</IncludeContentInPack>

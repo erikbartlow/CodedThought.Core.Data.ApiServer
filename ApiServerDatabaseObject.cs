@@ -1,5 +1,8 @@
 ﻿using System.Data;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 
+using CodedThought.Core.Configuration;
 using CodedThought.Core.Data.Interfaces;
 
 namespace CodedThought.Core.Data.ApiServer
@@ -8,11 +11,44 @@ namespace CodedThought.Core.Data.ApiServer
     public class ApiServerDatabaseObject : DatabaseObject, IDatabaseObject
     {
 
-        public ApiServerDatabaseObject() { }
+        public ApiServerDatabaseObject()
+        {
+            SupportedDatabase = DBSupported.ApiServer;
 
+        }
         #region Override Methods
 
-        public override bool TestConnection() => throw new NotImplementedException();
+        /// <summary>
+        /// Sends a ping test to the configured web service Url and returns true or false depending on if it was successfull.
+        /// </summary>
+        /// <returns></returns>
+        public override bool TestConnection()
+        {
+            try
+            {
+                if (base.CoreConnection == null)
+                {
+                    throw new ApplicationException("The web service connection setting information is not set.");
+                }
+
+                if (String.IsNullOrEmpty(ConnectionSetting.SourceUrl))
+                {
+                    throw new ApplicationException("The web service host Url is empty.");
+                }
+                
+                if (ApiHostUri.Port == null)
+                {
+                    using (TcpClient client = new(ApiHostUri.Host, 80))
+                        return true;
+                }
+                else
+                {
+                    using (TcpClient client = new(ApiHostUri.Host, ApiHostUri.Port ))
+                        return true;
+                }
+            }
+            catch { return false; }
+        }
 
         protected override IDbConnection OpenConnection() => throw new NotImplementedException();
 
@@ -22,6 +58,15 @@ namespace CodedThought.Core.Data.ApiServer
 
         #region Internal Methods
 
+        public ApiConnectionSetting ConnectionSetting => (ApiConnectionSetting) base.CoreConnection; 
+        public Uri ApiHostUri
+        {
+            get
+            {
+                Uri uri = new(ConnectionSetting.SourceUrl);
+                return uri;
+            }
+        }
         /// <summary>Encodes the basic authentication to pass in HttpClient web calls.</summary>
         /// <param name="username"></param>
         /// <param name="password"></param>

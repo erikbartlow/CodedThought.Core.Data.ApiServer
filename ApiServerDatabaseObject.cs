@@ -10,13 +10,21 @@ namespace CodedThought.Core.Data.ApiServer
 
     public class ApiServerDatabaseObject : DatabaseObject, IDatabaseObject
     {
+        private ApiConnectionSetting _connectionSetting;
 
         public ApiServerDatabaseObject()
         {
             SupportedDatabase = DBSupported.ApiServer;
+            _connectionSetting = new ApiConnectionSetting((ConnectionSetting) base.CoreConnection);
 
         }
         #region Override Methods
+
+        public override void SetDatabaseObjectProperties(ConnectionSetting coreConnection, string connectionString, string? defaultSchema)
+        {
+            base.SetDatabaseObjectProperties(coreConnection, connectionString, defaultSchema);
+            _connectionSetting = new ApiConnectionSetting((ConnectionSetting) base.CoreConnection);
+        }
 
         /// <summary>
         /// Sends a ping test to the configured web service Url and returns true or false depending on if it was successfull.
@@ -26,7 +34,7 @@ namespace CodedThought.Core.Data.ApiServer
         {
             try
             {
-                if (base.CoreConnection == null)
+                if (ConnectionSetting == null)
                 {
                     throw new ApplicationException("The web service connection setting information is not set.");
                 }
@@ -38,6 +46,7 @@ namespace CodedThought.Core.Data.ApiServer
                 
                 if (ApiHostUri.Port == null)
                 {
+
                     using (TcpClient client = new(ApiHostUri.Host, 80))
                         return true;
                 }
@@ -49,7 +58,7 @@ namespace CodedThought.Core.Data.ApiServer
             }
             catch { return false; }
         }
-
+        
         protected override IDbConnection OpenConnection() => throw new NotImplementedException();
 
         protected ApiToken Authenticate(string username, string password) => throw new NotImplementedException();
@@ -58,7 +67,7 @@ namespace CodedThought.Core.Data.ApiServer
 
         #region Internal Methods
 
-        public ApiConnectionSetting ConnectionSetting => (ApiConnectionSetting) base.CoreConnection; 
+        public ApiConnectionSetting ConnectionSetting => _connectionSetting;
         public Uri ApiHostUri
         {
             get
@@ -170,6 +179,8 @@ namespace CodedThought.Core.Data.ApiServer
         public override List<TableColumn> GetViewDefinition(string viewName) => throw new NotImplementedException();
         public override List<TableSchema> GetTableDefinitions() => throw new NotImplementedException();
         public override List<ViewSchema> GetViewDefinitions() => throw new NotImplementedException();
+        protected override Task<IDbConnection> OpenConnectionAsync() => throw new NotImplementedException();
+        public override Task<bool> TestConnectionAsync() => throw new NotImplementedException();
 
         #endregion Non-Implemented Interface Methods
     }

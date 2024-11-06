@@ -7,11 +7,11 @@
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<PackageId>$(AssemblyName)</PackageId>
 	<Title>CodedThought.Core.Data.ApiServer </Title>
-	<VersionPrefix>2.0.0.3</VersionPrefix>
-	<AssemblyVersion>2.0.0.3</AssemblyVersion>
+	<VersionPrefix>2.0.0.4</VersionPrefix>
+	<AssemblyVersion>2.0.0.4</AssemblyVersion>
 	<AssemblyProductAttribute>CodedThought.Core.Data.ApiServer</AssemblyProductAttribute>
-	<FileVersion>2.0.0.3</FileVersion>
-	<Version>2.0.0.3</Version>
+	<FileVersion>2.0.0.4</FileVersion>
+	<Version>2.0.0.4</Version>
 	<Description>The CodedThought.Core.Data.ApiServer library is a custom REST Api Data provider for the CodedThought.Core Data Entity library.</Description>
 	<Version>$(VersionPrefix)</Version>
 	<Authors>Erik Bartlow</Authors>
@@ -30,19 +30,40 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ApiDataReader.cs" />
+    <Compile Remove="GenericApiDataStore.cs" />
+    <Compile Remove="GenericApiDataStoreController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
 
   <ItemGroup>
-	<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
+	<PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.3.0" />
+	<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
 	<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 
-  <ItemGroup>
-    <ProjectReference Include="..\CodedThought.Core\CodedThought.Core\CodedThought.Core.csproj" />
-  </ItemGroup>
+  <Choose>
+	<When Condition="'$(Configuration)' == 'Release'">
+	  <ItemGroup>
+		<PackageReference Include="CodedThought.Core" Version="8.0.1.2" />
+		<PackageReference Include="CodedThought.Core.Configuration" Version="8.0.1" />
+	  </ItemGroup>
+	</When>
+  </Choose>
+
+  <Choose>
+	<When Condition="'$(Configuration)' == 'Debug'">
+	  <ItemGroup>
+		<ProjectReference Include="..\CodedThought.Core\CodedThought.Core\CodedThought.Core.csproj" />
+		<ProjectReference Include="..\CodedThought.Core\CodedThought.Core.Configuration\CodedThought.Core.Configuration.csproj" />
+	  </ItemGroup>
+	</When>
+  </Choose>
 
   <ItemGroup>
 	<None Update="LICENSE" Pack="true" PackagePath="" />

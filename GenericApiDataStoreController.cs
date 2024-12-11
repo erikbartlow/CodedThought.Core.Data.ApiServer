@@ -1,6 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace CodedThought.Core.Data.ApiServer {
+namespace CodedThought.Core.Data {
 
 	public class GenericApiDataStoreController : ControllerBase, IDisposable {
 
@@ -18,7 +18,5 @@ namespace CodedThought.Core.Data.ApiServer {
 				DataStore = null;
 			}
 		}
-
-        protected override void ExecuteCore() => throw new NotImplementedException();
-    }
+	}
 }

@@ -83,7 +83,7 @@ namespace CodedThought.Core.Data.ApiServer
         private string EncodeBasicAuthCredentials(string username, string password)
         {
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes($"Basic {username} {password}");
-            return System.Convert.ToBase64String(plainTextBytes);
+            return Convert.ToBase64String(plainTextBytes);
         }
 
         /// <summary>Creates an Api parameter</summary>

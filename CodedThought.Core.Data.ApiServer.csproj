@@ -7,11 +7,11 @@
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<PackageId>$(AssemblyName)</PackageId>
 	<Title>CodedThought.Core.Data.ApiServer </Title>
-	<VersionPrefix>2.0.0.4</VersionPrefix>
-	<AssemblyVersion>2.0.0.4</AssemblyVersion>
+	<VersionPrefix>2.0.0.7</VersionPrefix>
+	<AssemblyVersion>2.0.0.7</AssemblyVersion>
 	<AssemblyProductAttribute>CodedThought.Core.Data.ApiServer</AssemblyProductAttribute>
-	<FileVersion>2.0.0.4</FileVersion>
-	<Version>2.0.0.4</Version>
+	<FileVersion>2.0.0.7</FileVersion>
+	<Version>2.0.0.7</Version>
 	<Description>The CodedThought.Core.Data.ApiServer library is a custom REST Api Data provider for the CodedThought.Core Data Entity library.</Description>
 	<Version>$(VersionPrefix)</Version>
 	<Authors>Erik Bartlow</Authors>
@@ -28,11 +28,12 @@
 	<Copyright>Copyright (c) 2024, Erik Bartlow, All Rights Reserved</Copyright>
 
   </PropertyGroup>
-
+  <ItemGroup>
+	<FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  
   <ItemGroup>
     <Compile Remove="ApiDataReader.cs" />
-    <Compile Remove="GenericApiDataStore.cs" />
-    <Compile Remove="GenericApiDataStoreController.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,16 +42,14 @@
 
 
   <ItemGroup>
-	<PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.3.0" />
 	<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
-	<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 
   <Choose>
 	<When Condition="'$(Configuration)' == 'Release'">
 	  <ItemGroup>
-		<PackageReference Include="CodedThought.Core" Version="8.0.1.2" />
+		<PackageReference Include="CodedThought.Core" Version="8.0.1.22" />
 		<PackageReference Include="CodedThought.Core.Configuration" Version="8.0.1" />
 	  </ItemGroup>
 	</When>

@@ -7,11 +7,11 @@
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<PackageId>$(AssemblyName)</PackageId>
 	<Title>CodedThought.Core.Data.ApiServer </Title>
-	<VersionPrefix>2.0.0.10</VersionPrefix>
-	<AssemblyVersion>2.0.0.10</AssemblyVersion>
+	<VersionPrefix>2.0.0.11</VersionPrefix>
+	<AssemblyVersion>2.0.0.11</AssemblyVersion>
 	<AssemblyProductAttribute>CodedThought.Core.Data.ApiServer</AssemblyProductAttribute>
-	<FileVersion>2.0.0.10</FileVersion>
-	<Version>2.0.0.10</Version>
+	<FileVersion>2.0.0.11</FileVersion>
+	<Version>2.0.0.11</Version>
 	<Description>The CodedThought.Core.Data.ApiServer library is a custom REST Api Data provider for the CodedThought.Core Data Entity library.</Description>
 	<Version>$(VersionPrefix)</Version>
 	<Authors>Erik Bartlow</Authors>

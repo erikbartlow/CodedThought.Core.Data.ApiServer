@@ -18,7 +18,7 @@ namespace CodedThought.Core.Configuration
             ConnectionSetting connection = options.Connections.FirstOrDefault(x => x.Primary == true && x.ProviderType.ToLower() == "apiserver");
             return connection != null ? new ApiConnectionSetting(connection) :  null;
         }
-        public static ApiConnectionSetting GetCorePrimaryApiConnection(this IConfiguration configuration, string name)
+        public static ApiConnectionSetting GetCoreApiConnection(this IConfiguration configuration, string name)
         {
             CoreSettings options = new() { Settings = [], Connections = [] };
             configuration.GetSection(nameof(CoreSettings)).Bind(options);

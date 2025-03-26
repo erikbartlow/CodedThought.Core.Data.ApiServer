@@ -7,11 +7,11 @@
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<PackageId>$(AssemblyName)</PackageId>
 	<Title>CodedThought.Core.Data.ApiServer </Title>
-	<VersionPrefix>2.0.0.7</VersionPrefix>
-	<AssemblyVersion>2.0.0.7</AssemblyVersion>
+	<VersionPrefix>2.0.0.10</VersionPrefix>
+	<AssemblyVersion>2.0.0.10</AssemblyVersion>
 	<AssemblyProductAttribute>CodedThought.Core.Data.ApiServer</AssemblyProductAttribute>
-	<FileVersion>2.0.0.7</FileVersion>
-	<Version>2.0.0.7</Version>
+	<FileVersion>2.0.0.10</FileVersion>
+	<Version>2.0.0.10</Version>
 	<Description>The CodedThought.Core.Data.ApiServer library is a custom REST Api Data provider for the CodedThought.Core Data Entity library.</Description>
 	<Version>$(VersionPrefix)</Version>
 	<Authors>Erik Bartlow</Authors>
@@ -25,7 +25,8 @@
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<IncludeReferencedProjects>true</IncludeReferencedProjects>
-	<Copyright>Copyright (c) 2024, Erik Bartlow, All Rights Reserved</Copyright>
+	<Copyright>Copyright (c) 2025, Erik Bartlow, All Rights Reserved</Copyright>
+	<PackageReleaseNotes>Added new connection setting extensions to easily get an ApiConnectionSetting.</PackageReleaseNotes>
 
   </PropertyGroup>
   <ItemGroup>
@@ -42,14 +43,14 @@
 
 
   <ItemGroup>
-	<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+	<PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
   </ItemGroup>
 
 
   <Choose>
 	<When Condition="'$(Configuration)' == 'Release'">
 	  <ItemGroup>
-		<PackageReference Include="CodedThought.Core" Version="8.0.1.22" />
+		<PackageReference Include="CodedThought.Core" Version="8.0.1.33" />
 		<PackageReference Include="CodedThought.Core.Configuration" Version="8.0.1" />
 	  </ItemGroup>
 	</When>

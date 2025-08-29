@@ -170,6 +170,7 @@ namespace CodedThought.Core.Data.ApiServer
         public override string GetTableDefinitionQuery(string tableName) => throw new NotImplementedException();
 
         public override string GetDefaultSessionSchemaNameQuery() => throw new NotImplementedException();
+        public override void Add(string tableName, string schemaName, object obj, List<TableColumn> columns, IDBStore store) => throw new NotImplementedException();
         public override void Add(string tableName, object obj, List<TableColumn> columns, IDBStore store) => throw new NotImplementedException();
         public override DbTypeSupported ToDbSupportedType(string dbTypeName) => throw new NotImplementedException();
         public override string GetViewDefinitionQuery(string viewName) => throw new NotImplementedException();
